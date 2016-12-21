@@ -1,6 +1,6 @@
 /**
  * Created by Anton on 15.12.2016.
- * @author Anton
+ * @author Anton 
  */
 
 import java.util.Scanner;
