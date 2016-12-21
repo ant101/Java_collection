@@ -9,7 +9,7 @@ import java.util.Random;
  *4.Create array int[] mas = { 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 }; multiply all numbers less 6 by 2 using loop;
  *5.* Create one dimensional array and find min and max values;
  *6.** Write simple console calculator. User inputs 2 numbers and operation, the program calculates and shows the result;
- *
+ * comments
  */
 
 class DZ2 {
