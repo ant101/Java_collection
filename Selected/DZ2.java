@@ -9,12 +9,12 @@ import java.util.Random;
  *4.Create array int[] mas = { 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 }; multiply all numbers less 6 by 2 using loop;
  *5.* Create one dimensional array and find min and max values;
  *6.** Write simple console calculator. User inputs 2 numbers and operation, the program calculates and shows the result;
- * comments
+ *
  */
 
 class DZ2 {
     public static void main (String[] args) {
-        //task 1
+        //task 1 and 2
         Random random = new Random();
         int[] mymassiv = new int[10]; 
         System.out.println ("Task 1. The array:");
@@ -35,7 +35,7 @@ class DZ2 {
         System.out.println("Task 3. Filled array: ");
         int[] array22 = new int[8];  
         for (int i = 0; i < array22.length; i++) {
-        array22[i] = i*3 + 1;
+        array22[i] = i * 3 + 1;
         System.out.print (array22[i] + " ");  
         }
 
@@ -51,12 +51,8 @@ class DZ2 {
         System.out.println();
         System.out.println ("Task 4. Changed array: ");      //display changed array
         for (int i = 0; i < mas.length; i++) {
-            if (mas[i] < 6) {                    //if element less 6, multiply it by 2
-                mas[i] *= 2;
-                System.out.print (mas[i] + " ");
-            } else {
-                System.out.print(mas [i] + " ");
-            }
+            if (mas[i] < 6) {mas[i] *= 2;}                    //if element less 6, multiply it by 2
+             System.out.print(mas [i] + " ");
         }
     
         //task 5//////
@@ -66,38 +62,27 @@ class DZ2 {
         for (int i = 0; i < odm.length; i++) {
             System.out.print (odm[i] + " ");
         }
+        System.out.println();
         
         int min = odm[0];    //1st element is start number
         int max = odm[0];
-        for (int i = 0; i < odm.length-1; i++) {    
-            if (min > odm[i+1]) {                    //if current element more than next, than next element is less 
-                min = odm[i+1];
-            }
-            if (max < odm[i+1]) {                    //if current element less than next, than next element is more
-                max = odm[i+1];
-            }
+        for (int i = 1; i < odm.length; i++) {    
+            if (odm[i] < min) {min = odm[i];}      //if current element more than next, than next element is less 
+            if (odm[i] > max) {max = odm[i];}      //if current element less than next, than next element is more
         }
-        System.out.println();
-        System.out.println ("Min = " + min);
-        System.out.println ("Max = " + max);
+
+        System.out.println ("Min = " + min + "\n" + "Max = " + max );
+
 
         //task 6 calculator///////////////////////////////////////////////
         
         
         double myresult = 0;
-        Scanner sc = new Scanner(System.in);
-        System.out.println();
         System.out.println("Task 6. Calculator. Please enter expression: ");
-        String s = sc.nextLine();         //write string to variable
-        String[] parts = s.split(" ");    //split it with space
-        
-        String part1 = parts[0];  //assigning string parts to variables
-        String znak = parts[1]; 
-        String part3 = parts[2];
-                              
-        double ch1 = Double.parseDouble(part1);   //convert from String to double
-        double ch2 = Double.parseDouble(part3);
-                        
+        Scanner sc = new Scanner(System.in);
+        double ch1 = Double.parseDouble(sc.next());
+        String znak = sc.next();
+        double ch2 = Double.parseDouble(sc.next());
             switch (znak) {  //prefrom actions depending on sign 
                case "+":
                    myresult = ch1+ch2;
@@ -120,7 +105,7 @@ class DZ2 {
                        }
                    break;
                }
-            
+            sc.close();
     }
 
 }
