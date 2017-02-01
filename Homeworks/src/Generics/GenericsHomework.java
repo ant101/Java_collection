@@ -1,3 +1,5 @@
+package Generics;
+
 /**
  * Created by Anton Malyshev on 21.01.2017.
  * Java 3 HomeWork #1
