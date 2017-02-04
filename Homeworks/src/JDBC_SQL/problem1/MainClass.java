@@ -1,6 +1,7 @@
 package JDBC_SQL.problem1;
 
 import java.sql.*;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import static java.lang.System.currentTimeMillis;
 
@@ -70,10 +71,12 @@ public class MainClass {
         }
 
         System.out.println("Доступные команды: \n /цена *имя товара* \n /сменитьцену *имя товара* *цена* \n /товарыпоцене *цена* *цена* \n /выход");
+        boolean stopReading = false;
 
         while (true) {
             System.out.println("Введите ваш запрос: ");
             String s = in.next();
+
             switch (s) {
                 case "/цена":
                     s = in.next();
@@ -87,7 +90,7 @@ public class MainClass {
                     System.out.println("Такого товара нет.");
                     }
                     break;
-                case "/сменитьцену":
+                case "/сменитьцену":        //добавить обработчик неправильно введенная цена
                     s = in.next();
                     int newPrice = in.nextInt();
                     if (isExistItem(s)) {
@@ -101,24 +104,35 @@ public class MainClass {
                         System.out.println("Такого товара нет.");
                     }
                     break;
-                case "/товарыпоцене":
-                    int num1 = in.nextInt();
-                    int num2 = in.nextInt();
+                case "/товарыпоцене":           //можно ещё добавить обработчик если второе число меньше первого; введены слишком большие числа;
                     try {
-                        rs = stmt.executeQuery("SELECT title, cost FROM goods WHERE cost BETWEEN " + num1 + " AND " + num2);
-                        while (rs.next()) {
-                            System.out.println(rs.getString(1) + ", " + rs.getInt(2));
+                        float num1 = in.nextFloat();    //считываем 2 числа
+                        float num2 = in.nextFloat();
+                        if ((num1 > 0) & (num2 > 0)) {      //если они больше нуля
+                            rs = stmt.executeQuery("SELECT title, cost FROM goods WHERE cost BETWEEN " + num1 + " AND " + num2);    //то выполняем запрос
+                                if (rs.next()) {    //если запрос не пустой
+                                    while (rs.next()) {
+                                        System.out.println(rs.getString(1) + ", " + rs.getInt(2));  //то выводим информацию
+                                    }
+                                } else {System.out.println("Ваш запрос не вернул результатов.");}    //если запрос пустой, выводим ошибку.
+                        } else {
+                            System.out.println("Введите положительные числа");      //если любое из 2 чисел отрицательное, выводим ошибку.
                         }
-                    } catch (SQLException e) {
-                        e.printStackTrace();
+                    } catch (SQLException e1) {
+                        e1.printStackTrace();
+                    } catch (InputMismatchException e2) {
+                        System.out.println("Введены неверные числа.");
+
                     }
                     break;
                 case "/выход":
                     System.exit(0);
                     disconnect();
             }
+            in.nextLine();  //чтобы сканер начал читать с начала строки следующий ввод
         }
     }
+
 
     public static boolean isExistItem(String nameOfItem) {
         try {
