@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.Random;
 
 /*
- * Author Malyshev Anton. Homework 2
+ * Author Malyshev Anton. Homework 2. j1hw2
  *1.Create array consisting of 0 and 1 elements, e.g. int[] arr = { 1, 1, 0, 0, 1, 0, 1, 1, 0, 0 };
  *2.Using loops, change 0 to 1, 1 to 0 at this array;
  *3.Create 8 int numbers array. Fill it with this numbers 1 4 7 10 13 16 19 22 using loops;
