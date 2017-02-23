@@ -80,6 +80,7 @@ public class IOHomeWork1 {
                 while ( (x = tempBIS.read()) != -1) {
                     out.write(x);
                 }
+                tempBIS.close();
             }
             out.close();
             for (InputStream is : a1) {
@@ -115,7 +116,7 @@ public class IOHomeWork1 {
                     System.out.print((char) x);
                 }
             }
-
+            raf.close();
             System.out.println("\nВремя чтения из файла в консоль:" + (System.currentTimeMillis() - t) + " мс.\nВыход из програмы");
         } catch (IOException e) {
             e.printStackTrace();
