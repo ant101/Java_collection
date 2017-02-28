@@ -62,7 +62,7 @@ public class IOHomeWork1 {
         long t = System.currentTimeMillis();
         ArrayList<InputStream> a1 = new ArrayList<>();
         InputStream tempBIS;
-       int x;
+        int x;
         try {
             a1.add(new BufferedInputStream(new FileInputStream("src\\IO\\files\\11.txt")));
             a1.add(new BufferedInputStream(new FileInputStream("src\\IO\\files\\22.txt")));
@@ -110,7 +110,6 @@ public class IOHomeWork1 {
             t = System.currentTimeMillis();
             RandomAccessFile raf = new RandomAccessFile(book, "r");
             raf.seek(ONEPAGE * enteredPageNumber);
-
             for (int i = 0; i < ONEPAGE; i++) {
                 if ((x = raf.read()) != -1) {
                     System.out.print((char) x);
