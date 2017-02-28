@@ -1,4 +1,4 @@
-package Threads.Drafts;
+package Threads.Examples;
 
 /**
  * Created by Anton on 11.02.2017.
